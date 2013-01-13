@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <link rel="shortcut icon" href="./../resources/public/images/favicon.ico" />
+        <meta http-equiv="Content-Script-Type" content="text/javascript" /> 
+        
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        
+        <ui:insert name="seo"></ui:insert>
+        
+        <meta name="robots" content="index, follow" />
+        <meta name="author" content="Leandro da Costa Gonçalves, Mislene Dalila da Silva" />
+        <link rel="shortcut icon" href="images/favicon.html" />
+
+        <!--CSS-->
+        <link href="./../resources/public/styles/style.css" rel="stylesheet" type="text/css" />
+        <link href="./../resources/public/styles/color.css" rel="stylesheet" type="text/css" />
+        <link href="./../resources/public/styles/noscript.css" rel="stylesheet" type="text/css" id="noscript" media="screen,all"  />
+
+        <!--Javascript-->
+        <script type="text/javascript" src="./../resources/public/js/jquery-1.5.1.min.js"></script>
+        <script type="text/javascript" src="./../resources/public/js/cufon-yui.js"></script>
+        <script type="text/javascript" src="./../resources/public/js/Ebrima_400-Ebrima_700.font.js"></script>
+        <script type="text/javascript">
+            Cufon.replace('h1') ('h2') ('h3') ('h4') ('h5') ('h6') ('.slider-text h1', {textShadow: '#000 2px 0px 2px'}) ('.slider-text .button');
+        </script>
+        <script type="text/javascript" src="./../resources/public/js/jquery.lavalamp.js"></script>
+        <script type="text/javascript" src="./../resources/public/js/lavalamp-config.js"></script>
+        <script type="text/javascript" src="./../resources/public/js/jquery.easing.1.1.js"></script>
+        <script type="text/javascript" src="./../resources/public/js/jquery.preloader.js"></script>
+        <script type="text/javascript" src="./../resources/public/js/jquery.twitter.js"></script>
+        <script type="text/javascript" src="./../resources/public/js/twitter-config.js"></script>
+        <script type="text/javascript" src="./../resources/public/js/jquery.jcarousel.pack.js"></script>
+        <script type="text/javascript" src="./../resources/public/js/jquery.cycle.all.min.js"></script>
+        <script type="text/javascript" src="./../resources/public/js/gallery.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function(){
+                jQuery("#content").preloader();
+            });
+        </script>
+
+        <!--Demo Switcher-->
+        <link href="./../resources/public/styles/default/default.css" rel="stylesheet" type="text/css" id="skins-switcher" />
+        <link href="./../resources/public/styles/colorpicker.css" rel="stylesheet" type="text/css" />
+        <link href="./../resources/public/styles/style-switcher.css" rel="stylesheet" type="text/css" />
+        <script type="text/javascript" src="./../resources/public/js/jquery.cookie.js"></script>
+        <script type="text/javascript" src="./../resources/public/js/colorpicker.js"></script>
+        
+    </h:head>
+
+    <h:body>
+
+        <div id="wrapper">
+
+            <div id="wrapper-top">
+                <div id="top">
+                    <div id="top-left"><a href="index-2.html"><img src="./../resources/public/images/logo.png" alt="" /></a></div><!-- #top-left -->
+                    <div id="top-right">
+                        <div id="nav">
+                            <ul id="topnav">
+                                <li><a href="./../restrict/home.faces" >Home</a></li>
+                                <li class="current"><a href="#">About Us</a>
+                                    <ul>
+                                        <li><a href="index-2.html">Homepage Default</a></li>
+                                        <li><a href="index2.html">Homepage Gallery</a></li>
+                                        <li><a href="index3.html">Homepage Blog</a></li>
+                                        <li><a href="index4.html">Homepage Hosting</a></li>
+                                        <li><a href="pricingbox.html">Web Hosting</a></li>
+                                        <li><a href="blog.html">Blog</a></li>
+                                        <li><a href="single.html">Blog Details</a></li>
+                                        <li><a href="rightsidebar.html">Right Sidebar</a></li>
+                                        <li><a href="leftsidebar.html">Left Sidebar</a></li>
+                                        <li><a href="404.html">404 Page</a></li>
+                                        <li><a href="columns.html">Column Layouts</a></li>
+                                        <li><a href="elements.html">Elements</a></li>
+                                        <li><a href="tabs.html">Tabs &amp; Accordion</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="products.html">Products</a></li>
+                                <li><a href="services.html">Services</a></li>
+                                <li><a href="#">Portfolio</a>
+                                    <ul>
+                                        <li><a href="portfolio2.html">Portfolio Two Column </a></li>
+                                        <li><a href="portfolio3.html">Portfolio Three Column</a></li>
+                                        <li><a href="portfolio4.html">Filterable Portfolio</a></li>
+                                        <li><a href="gallery.html">Portrait Gallery</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="contact.html">Contact</a></li>
+                            </ul>
+                                <!-- #topnav -->
+                        </div><!-- #nav -->
+                    </div><!-- #top-right -->
+                </div><!-- #top -->
+            </div><!-- #wrapper-top -->
+
+            
+            <!-- Fim dos Menus ####################################################################################### Fim dos Menus-->
+
+
+            <ui:insert name="conteudo"></ui:insert>
+
+
+            <!-- Início do Rodapé ######################################################################################### Início do Rodapé-->
+            
+            <div id="wrapper-bottom">
+                <div id="tweets">
+                    <div id="twitter"></div>
+                </div><!-- #tweets -->
+            </div><!-- #wrapper-bottom -->
+
+            <div id="wrapper-footer">
+                <div id="footer-light"></div><!-- #footer-light -->
+                <div id="footer">
+                    <div class="one_fourth">
+                        <ul>
+                            <li class="widget-container">
+                            <h2 class="widget-title">Recent News</h2>
+                            <ul>
+                                <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dolor nisi, aliquam et aliquam tincidunt...</a></li>
+                                <li><a href="#">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam dolor nisi, aliquam et aliquam tincidunt...</a></li>
+                            </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="one_fourth">
+                        <ul>
+                            <li class="widget-container">
+                            <h2 class="widget-title">Blogroll</h2>
+                            <ul>
+                                <li><a href="#">Themes</a></li>
+                                <li><a href="#">Support Forum</a></li>
+                                <li><a href="#">Plugins</a></li>
+                                <li><a href="#">Documentation</a></li>
+                                <li><a href="#">Sugest Ideas</a></li>
+                            </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="one_fourth">
+                        <ul>
+                            <li class="widget-container">
+                            <h2 class="widget-title">Archives</h2>
+                            <ul>
+                                <li><a href="#">September 2011</a></li>
+                                <li><a href="#">August 2011</a></li>
+                                <li><a href="#">July 2011</a></li>
+                                <li><a href="#">June 2011</a></li>
+                                <li><a href="#">May 2011</a></li>
+                            </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="one_fourth last">
+                        <ul>
+                            <li class="widget-container">
+                            <h2 class="widget-title">Pages</h2>
+                            <ul>
+                                <li><a href="#">Useful Links</a></li>
+                                <li><a href="#">Frequently Questions</a></li>
+                                <li><a href="#">History</a></li>
+                                <li><a href="#">About Company</a></li>
+                                <li><a href="#">Online Supports</a></li>
+                            </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </div><!-- #footer -->
+            </div><!-- #wrapper-footer -->
+            
+            <div id="wrapper-footer-text">
+                <div id="footer-text">
+                    <div id="footnav">
+                        <ul>
+                            <li><a href="index-2.html">Home</a></li>
+                            <li><a href="products.html">Products</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="portfolio2.html">Portfolio</a></li>
+                            <li> <a href="blog.html">Blog</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div><!-- #footnav -->
+                    
+                    <div id="copyright"><a href="http://www.kaus.com.br/">Kaus - Tecnologia e Sistemas - &copy; Copyright kaus.com.br 2012</a></div><!-- #copyright -->
+                </div><!-- #footer-text -->
+            </div><!-- #wrapper-footer-text -->
+
+        </div><!-- #wrapper -->
+
+        <script type="text/javascript"> Cufon.now(); </script> <!-- to fix cufon problems in IE browser -->
+        <script type="text/javascript">jQuery('#noscript').remove();</script><!-- if javascript disable -->
+    </h:body>
+
+</html>

@@ -10,19 +10,261 @@
     <name>erudio-client-web</name>
 
     <properties>
-        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <spring.version>3.1.0.RELEASE</spring.version>
+        <slf4j.version>1.6.4</slf4j.version>
+        <jstl.version>1.2</jstl.version>
+        <themes.version>1.0.8</themes.version>
+        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+        <netbeans.hint.deploy.server>Tomcat</netbeans.hint.deploy.server>
     </properties>
 
+    <repositories>
+        
+        <!-- PRIMEFACES REPOSITORY -->
+        <repository>
+            <id>prime-repo</id>
+            <name>PrimeFaces Maven Repository</name>
+            <url>http://repository.primefaces.org</url>
+            <layout>default</layout>
+        </repository>        
+                
+        <!-- FACELETS TAGLIBRARIES REPOSITORY -->
+        
+        <repository>
+            <id>org.springframework.security.taglibs.facelets</id>
+            <url>http://spring-security-facelets-taglib.googlecode.com/svn/repo/</url>
+        </repository>
+        
+        <!-- NAKED OBJECTS -->
+        <repository>
+            <id>no-snapshotsd</id>
+            <url>http://nakedobjects.sourceforge.net/m2-repo/snapshot/</url>
+        </repository>
+
+        <!-- MAVEN REPOSITORY -->
+        <repository>
+            <id>mvn-repository</id>
+            <url>http://mvnrepository.com/</url>
+        </repository>
+
+        <!-- MAVEN SEARCH REPOSITORY -->
+        <repository>
+            <id>mavensearch</id>
+            <url>http://www.mvnsearch.org/maven2</url>
+        </repository>
+
+        <!-- SPRING REPOSITORY -->
+        <repository>
+            <id>com.springsource.repository.bundles.release</id>
+            <name>EBR Spring Release Repository</name>
+            <url>http://repository.springsource.com/maven/bundles/release </url>
+        </repository>
+
+        <!-- SPRING REPOSITORY -->
+        <repository>
+            <id>com.springsource.repository.bundles.external</id>
+            <name>EBR External Release Repository</name>
+            <url>http://repository.springsource.com/maven/bundles/external </url>
+        </repository>
+
+        <!-- JBOSS REPOSITORY -->
+        <repository>
+            <id>jboss-repository</id>
+            <url>https://repository.jboss.org/nexus/content/repositories/</url>
+        </repository>
+
+        <!-- JBOSS REPOSITORY -->
+        <repository>
+            <id>JBoss Repo</id>
+            <url>http://repository.jboss.com</url>
+        </repository>
+
+        <!-- GOOGLE REPOSITORY -->
+        <repository>
+            <id>google-repository</id>
+            <url>http://google-maven-repository.googlecode.com/svn/repository/</url>
+        </repository>
+
+        <!-- GLASSFISH REPOSITORY -->
+        <repository>
+            <id>glassfish-repository</id>
+            <url>http://download.java.net/maven/glassfish/</url>
+        </repository>
+
+        <!-- REPO2 REPOSITORY -->
+        <repository>
+            <id>repo2</id>
+            <url>http://repo2.maven.org/maven2</url>
+        </repository>
+
+        <!-- SPRING MAVEN MILESTONE -->
+        <repository>
+            <id>org.springframework.maven.milestone</id>
+            <name>Spring Maven Milestone Repository</name>
+            <url>http://maven.springframework.org/milestone</url>
+        </repository>
+    </repositories>
+
     <dependencies>
+        <!-- ERUDIO UTILS -->
+        <dependency>
+            <groupId>br.com.erudio</groupId>
+            <artifactId>erudio-utils</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <!-- JUNIT -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.10</version>
+        </dependency>
+
+        <!-- JAVAX INJECT -->
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+        </dependency>
+
+        <!-- SPRING TEST -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- SPRING CORE -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- SPRING CONTEXT -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- SPRING WEB -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <!-- COMMONS LANG3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.1</version>
+        </dependency>
+
+        <!-- SLF4J -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+              
+        <!-- ################ JSTL ################# -->
+        <dependency>  
+            <groupId>javax.servlet</groupId>  
+            <artifactId>jstl</artifactId>  
+            <version>${jstl.version}</version>  
+        </dependency>  
+    
+        <!-- ############ SERVLET-API ############## --> 
+        <dependency>  
+            <groupId>javax.servlet</groupId>  
+            <artifactId>servlet-api</artifactId>  
+            <version>3.0-alpha-1</version>  
+        </dependency>
+        
+        <!-- ############## JSP-API ################ -->
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>2.1</version>
+        </dependency>
+        
+        <!-- JSF API -->
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+            <version>2.1.7</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- JSF IMPL -->
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-impl</artifactId>
+            <version>2.1.7</version>
+        </dependency>
+        
+        <!-- ##### DEPENDÊNCIAS DO PRIMEFACES ##### -->
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces</artifactId>
+            <version>3.4.2</version>
+        </dependency>
+        
+        <!-- ######## TEMAS DO PRIMEFACES ######### -->        
+        <dependency>              
+            <groupId>org.primefaces.themes</groupId>  
+            <artifactId>cupertino</artifactId>              
+            <version>${themes.version}</version> 
+        </dependency> 
+        
+        <dependency>  
+            <groupId>org.primefaces.themes</groupId>  
+            <artifactId>le-frog</artifactId>  
+            <version>${themes.version}</version> 
+        </dependency> 
+        
+        <dependency>  
+            <groupId>org.primefaces.themes</groupId>  
+            <artifactId>sam</artifactId>  
+            <version>${themes.version}</version> 
+        </dependency> 
+        
+        <dependency>  
+            <groupId>org.primefaces.themes</groupId>  
+            <artifactId>pepper-grinder</artifactId>  
+            <version>${themes.version}</version> 
+        </dependency> 
+        
+        <dependency>  
+            <groupId>org.primefaces.themes</groupId>  
+            <artifactId>smoothness</artifactId>  
+            <version>${themes.version}</version> 
+        </dependency>        
+        
+        <dependency>  
+            <groupId>org.primefaces.themes</groupId>  
+            <artifactId>ui-lightness</artifactId>  
+            <version>${themes.version}</version> 
+        </dependency> 
+        
+        <dependency>  
+            <groupId>org.primefaces.themes</groupId>  
+            <artifactId>south-street</artifactId>  
+            <version>${themes.version}</version> 
+        </dependency>
+        
+        
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
             <version>6.0</version>
-            <scope>provided</scope>
+            <type>jar</type>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
