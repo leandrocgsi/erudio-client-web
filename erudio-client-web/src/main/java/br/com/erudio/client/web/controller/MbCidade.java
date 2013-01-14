@@ -5,58 +5,56 @@ import br.com.erudio.client.web.utils.FacesMessageUtil;
 import br.com.erudio.utils.database.beans.BeanCidade;
 import br.com.erudio.utils.service.interfaces.IServices;
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import org.apache.log4j.Logger;
 
 @ManagedBean(name = "mbCidade")
-@RequestScoped
-public class MbCidade implements Serializable{
-    
+@SessionScoped
+public class MbCidade implements Serializable {
+
     private static final long serialVersionUID = 1L;
-    
-    private Logger logger = Logger.getLogger(this.getClass());
-    
+    private final Logger logger = Logger.getLogger(this.getClass());
     private BeanCidade cidade = new BeanCidade();
-    
-    private List<BeanCidade> cidades = new ArrayList<BeanCidade>();
     private IServices services = Factory.getServices();
-    
-
-    public MbCidade() {
-    }
-
-    public String limpCidade() {
-        cidades = new ArrayList<BeanCidade>();
-        cidade = new BeanCidade();
-        return "/restrict/cadastrarcidades.faces";
-    }
-    
-    public String addCidade() {
-        if ((cidade.getIdCidade() == null) || (cidade.getIdCidade() == 0)) {
-            //services.saveCidade(cidade);
-            FacesMessageUtil.message("INFO", "Gravação efetuada com sucesso", null);
-        } else {
-            //services.updateCidade(cidade);
-            FacesMessageUtil.message("INFO", "Informações atualizadas com sucesso", null);
-        }
-        return limpCidade();
-    }
-    
-    public String deleteCidade(BeanCidade cidade) {
-        //services.deleteCidade(cidade);
-        FacesMessageUtil.message("INFO", "Cidade excluída com sucesso", null);
-        return limpCidade();
-    }
+    private List<BeanCidade> cidades = new LinkedList<BeanCidade>();
 
     public List<BeanCidade> getCidades() {
         this.logger.info(services);
-        if (cidades == null || cidades.isEmpty()) {            
-                cidades = services.findAllCidades();
-        }        
+        if (cidades == null || cidades.isEmpty()) {
+            cidades = services.findAllCidades();
+        }
         return cidades;
+    }
+
+    public String save() {
+        if (cidade.getIdCidade() == null || cidade.getIdCidade() == 0) {
+            services.saveCidade(cidade);
+            FacesMessageUtil.infoMessage(null, "Informação gravada com sucesso!", null);
+        } else {
+            services.updateCidade(cidade);
+            FacesMessageUtil.infoMessage(null, "Informação atualizada com sucesso!", null);
+        }
+        limpaCidade();
+        return "/restrict/cidade.xhtml";
+    }
+
+    public void editar(BeanCidade cidadeBean) {
+        this.cidade = cidadeBean;
+    }
+
+    public String delete() {
+        services.deleteCidade(cidade);
+        FacesMessageUtil.infoMessage(null, "Informação excuída com sucesso!", null);
+        limpaCidade();
+        return "/restrict/cidade.xhtml";
+    }
+
+    public void limpaCidade() {
+        cidades = null;
+        cidade = new BeanCidade();
     }
 
     public BeanCidade getCidade() {
@@ -66,5 +64,4 @@ public class MbCidade implements Serializable{
     public void setCidade(BeanCidade cidade) {
         this.cidade = cidade;
     }
-
 }
