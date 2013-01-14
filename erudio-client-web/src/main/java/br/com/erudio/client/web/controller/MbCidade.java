@@ -37,8 +37,7 @@ public class MbCidade implements Serializable {
             services.updateCidade(cidade);
             FacesMessageUtil.infoMessage(null, "Informação atualizada com sucesso!", null);
         }
-        limpaCidade();
-        return "/restrict/cidade.xhtml";
+        return limpCidade();
     }
 
     public void editar(BeanCidade cidadeBean) {
@@ -48,13 +47,13 @@ public class MbCidade implements Serializable {
     public String delete() {
         services.deleteCidade(cidade);
         FacesMessageUtil.infoMessage(null, "Informação excuída com sucesso!", null);
-        limpaCidade();
-        return "/restrict/cidade.xhtml";
+        return limpCidade();        
     }
 
-    public void limpaCidade() {
+    public String limpCidade() {
         cidades = null;
         cidade = new BeanCidade();
+        return "/restrict/cidade.xhtml";
     }
 
     public BeanCidade getCidade() {
