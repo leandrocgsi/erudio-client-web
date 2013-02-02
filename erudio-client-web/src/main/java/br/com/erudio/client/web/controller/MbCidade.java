@@ -3,7 +3,7 @@ package br.com.erudio.client.web.controller;
 import br.com.erudio.client.web.factory.Factory;
 import br.com.erudio.client.web.utils.FacesMessageUtil;
 import br.com.erudio.utils.database.beans.BeanCidade;
-import br.com.erudio.utils.service.interfaces.IServices;
+import br.com.erudio.utils.service.interfaces.ICidadeUtilServices;
 import java.io.Serializable;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,23 +18,23 @@ public class MbCidade implements Serializable {
     private static final long serialVersionUID = 1L;
     private final Logger logger = Logger.getLogger(this.getClass());
     private BeanCidade cidade = new BeanCidade();
-    private IServices services = Factory.getServices();
+    private ICidadeUtilServices serviceCidade  = Factory.getServiceCidade();
     private List<BeanCidade> cidades = new LinkedList<BeanCidade>();
 
     public List<BeanCidade> getCidades() {
-        this.logger.info(services);
+        this.logger.info(serviceCidade);
         if (cidades == null || cidades.isEmpty()) {
-            cidades = services.findAllCidades();
+            cidades = serviceCidade.findAllCidades();
         }
         return cidades;
     }
 
     public String save() {
         if (cidade.getIdCidade() == null || cidade.getIdCidade() == 0) {
-            services.saveCidade(cidade);
+            serviceCidade.saveCidade(cidade);
             FacesMessageUtil.infoMessage(null, "Informação gravada com sucesso!", null);
         } else {
-            services.updateCidade(cidade);
+            serviceCidade.updateCidade(cidade);
             FacesMessageUtil.infoMessage(null, "Informação atualizada com sucesso!", null);
         }
         return limpCidade();
@@ -45,7 +45,7 @@ public class MbCidade implements Serializable {
     }
 
     public String delete() {
-        services.deleteCidade(cidade);
+        serviceCidade.deleteCidade(cidade);
         FacesMessageUtil.infoMessage(null, "Informação excuída com sucesso!", null);
         return limpCidade();        
     }

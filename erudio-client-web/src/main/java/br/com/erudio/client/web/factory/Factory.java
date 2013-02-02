@@ -1,21 +1,29 @@
 package br.com.erudio.client.web.factory;
 
-import br.com.erudio.utils.service.interfaces.IServices;
+import br.com.erudio.utils.service.interfaces.ICidadeUtilServices;
+import br.com.erudio.utils.service.interfaces.IPessoaUtilServices;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
 public class Factory {
 
-	private static IServices services;
+    private static ICidadeUtilServices serviceCidade;
+    private static IPessoaUtilServices servicePessoa;
 
-	@Inject
-	public Factory(IServices services) {
-		Factory.services = services;
-	}
+    @Inject
+    public Factory(ICidadeUtilServices serviceCidade,
+                   IPessoaUtilServices servicePessoa) {
+        Factory.serviceCidade = serviceCidade;
+        Factory.servicePessoa = servicePessoa;
+    }
 
-	public static IServices getServices() {
-		return services;
-	}
+    public static ICidadeUtilServices getServiceCidade() {
+        return serviceCidade;
+    }
 
+    public static IPessoaUtilServices getServicePessoa() {
+        return servicePessoa;
+    }
+        
 }
