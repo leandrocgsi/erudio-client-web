@@ -9,14 +9,38 @@
     <context:component-scan base-package="br.com.erudio.client.web" />
         
     <bean id="serviceDistributionCidade" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
-        <property name="serviceUrl" value="rmi://localhost:6681/remote-service-cidade" />
+        <property name="serviceUrl" value="rmi://localhost:1099/remote-service-cidade" />
         <property name="serviceInterface" value="br.com.erudio.utils.service.interfaces.ICidadeUtilServices" />
-        <property name="refreshStubOnConnectFailure" value="false" />
+        <property name="refreshStubOnConnectFailure" value="true" />
+    </bean>
+
+    <bean id="serviceDistributionEndereco" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceUrl" value="rmi://localhost:1099/remote-service-endereco" />
+        <property name="serviceInterface" value="br.com.erudio.utils.service.interfaces.IEnderecoUtilServices" />
+        <property name="refreshStubOnConnectFailure" value="true" />
+    </bean>
+
+    <bean id="serviceDistributionPessoa" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceUrl" value="rmi://localhost:1099/remote-service-pessoa" />
+        <property name="serviceInterface" value="br.com.erudio.utils.service.interfaces.IPessoaUtilServices" />
+        <property name="refreshStubOnConnectFailure" value="true" />
     </bean>
 
     <bean id="serviceDistributionSexo" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
-        <property name="serviceUrl" value="rmi://localhost:6681/remote-service-sexo" />
+        <property name="serviceUrl" value="rmi://localhost:1099/remote-service-sexo" />
         <property name="serviceInterface" value="br.com.erudio.utils.service.interfaces.ISexoUtilServices" />
-        <property name="refreshStubOnConnectFailure" value="false" />
+        <property name="refreshStubOnConnectFailure" value="true" />
+    </bean>
+
+    <bean id="serviceDistributionTipoEndereco" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceUrl" value="rmi://localhost:1099/remote-service-tipoendereco" />
+        <property name="serviceInterface" value="br.com.erudio.utils.service.interfaces.ITipoEnderecoUtilServices" />
+        <property name="refreshStubOnConnectFailure" value="true" />
+    </bean>
+
+    <bean id="serviceDistributionTipoLogradouro" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
+        <property name="serviceUrl" value="rmi://localhost:1099/remote-service-tipologradouro" />
+        <property name="serviceInterface" value="br.com.erudio.utils.service.interfaces.ITipoLogradouroUtilServices" />
+        <property name="refreshStubOnConnectFailure" value="true" />
     </bean>
 </beans>
