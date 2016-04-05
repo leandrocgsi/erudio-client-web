@@ -2,11 +2,14 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
     
     <display-name>Sistema de Gestão de bibliotecas</display-name>
-    
-    <welcome-file-list>
-        <welcome-file>index.jsp</welcome-file>
-    </welcome-file-list>
-    
+       
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:ctx-erudio-client-web.xml
+            classpath:ctx-spring-security.xml
+        </param-value>
+    </context-param>
     <!-- Duração da sessão -->
 
     <session-config>
@@ -14,37 +17,24 @@
             30
         </session-timeout>
     </session-config>
-    
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:ctx-erudio-client-web.xml</param-value>
-    </context-param>
-    
+        
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
     
-    <listener>
-        <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
-    </listener>
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
     
-        <!-- Configurações do PrimeFaces -->
-    
-    <servlet>
-        <servlet-name>Resource Servlet</servlet-name>
-        <servlet-class>org.primefaces.resource.ResourceServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Resource Servlet</servlet-name>
-        <url-pattern>/primefaces_resource/*</url-pattern>
-    </servlet-mapping>
-    <!-- Configurações do tema do PrimeFaces -->
-    <context-param>  
-        <param-name>primefaces.THEME</param-name>  
-        <param-value>sam</param-value>  
-    </context-param>   
-    
-        <!-- Configurações do JavaServer Faces -->
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
+    <!-- Configurações do JavaServer Faces -->
     
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
@@ -64,8 +54,8 @@
         <servlet-name>Faces Servlet</servlet-name>
         <url-pattern>*.faces</url-pattern>
     </servlet-mapping>
-    
-        <!-- Bloqueia o acesso à arquivos xhtml -->
+
+    <!-- Bloqueia o acesso à arquivos xhtml -->
     
     <security-constraint>
         <web-resource-collection>
@@ -75,4 +65,24 @@
         <auth-constraint/>
     </security-constraint>
 
+    <!-- Configurações do PrimeFaces -->
+    
+    <servlet>
+        <servlet-name>Resource Servlet</servlet-name>
+        <servlet-class>org.primefaces.resource.ResourceServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Resource Servlet</servlet-name>
+        <url-pattern>/primefaces_resource/*</url-pattern>
+    </servlet-mapping>
+    
+    <!-- Configurações do tema do PrimeFaces -->
+    <context-param>  
+        <param-name>primefaces.THEME</param-name>  
+        <param-value>sam</param-value>  
+    </context-param>   
+                    
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>

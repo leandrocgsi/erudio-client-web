@@ -8,6 +8,8 @@
 
     <context:component-scan base-package="br.com.erudio.client.web" />
         
+    <context:annotation-config />
+    
     <bean id="serviceDistributionCidade" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
         <property name="serviceUrl" value="rmi://localhost:1099/remote-service-cidade" />
         <property name="serviceInterface" value="br.com.erudio.utils.service.interfaces.ICidadeUtilServices" />

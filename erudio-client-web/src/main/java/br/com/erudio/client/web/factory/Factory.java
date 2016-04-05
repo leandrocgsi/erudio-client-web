@@ -13,7 +13,7 @@ public class Factory {
 
     @Inject
     public Factory(ICidadeUtilServices serviceCidade,
-                   IPessoaUtilServices servicePessoa) {
+            IPessoaUtilServices servicePessoa) {
         Factory.serviceCidade = serviceCidade;
         Factory.servicePessoa = servicePessoa;
     }
@@ -25,5 +25,4 @@ public class Factory {
     public static IPessoaUtilServices getServicePessoa() {
         return servicePessoa;
     }
-        
 }
