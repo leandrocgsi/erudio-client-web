@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" template="./../resources/main.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="tarefas">
+        <p:fieldset legend="Cadastrar Cidade" >
+
+            <br/>
+
+            <p:tabView dynamic="true" cache="true" id="tabView"> 
+
+                <p:tab title="Cidade">
+
+                    <h:form prependId="false" id="formCidade">
+                    
+                        <p:growl id="msg0" />
+                        <h:panelGrid columns="2" cellpadding="10" styleClass="panelGrid" id="grid0">
+
+                            <h:outputLabel/> 
+                            <h:inputHidden id="idcidade" value="#{mbCidade.cidade.idCidade}"/>
+
+                            <h:outputLabel for="nome" value="Nome.:" />
+                            <p:inputText id="nome" size="40" value="#{mbCidade.cidade.nome}"
+                                onkeyup="this.value = this.value.toUpperCase()" required="true" requiredMessage="O campo [Nome] é obrigatório."/>                          
+
+                            <h:outputLabel for="estado" value="Estado.:" />
+                            <p:inputText id="estado" size="40" value="#{mbCidade.cidade.estado}"
+                                onkeyup="this.value = this.value.toUpperCase()" required="true" requiredMessage="O campo [Estado] é obrigatório."/>                          
+                            
+                            <p:panel>
+                                <p:commandButton value="Salvar" actionListener="#{mbCidade.save}"  image="ui-icon ui-icon-disk" update=":tabView:formCidade"/>
+                                <p:commandButton value="Cancelar" actionListener="#{mbCidade.limpCidade}" image="ui-icon ui-icon-close" update=":tabView:formCidade"/>
+                            </p:panel>
+
+                        </h:panelGrid> 
+
+                <p:dataTable id="idTabela" var="cidade" value="#{mbCidade.cidades}" 
+                             paginator="true" rows="10"  
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"  
+                             rowsPerPageTemplate="5,10,15">  
+
+                    <f:facet name="header">  
+                        Lista de Cidades
+                    </f:facet>  
+                    <p:column> 
+                        <f:facet name="header">
+                            <h:outputText  value="Id" />  
+                        </f:facet>
+                        <h:outputText value="#{cidade.idCidade}" />  
+                    </p:column>
+
+
+                    <p:column> 
+                        <f:facet name="header">
+                            <h:outputText  value="Descrição" />  
+                        </f:facet>
+                        <h:outputText value="#{cidade.nome}" />  
+                    </p:column>
+
+
+                    <p:column>
+                        <p:commandButton value="Editar"  image="ui-icon ui-icon-pencil" immediate="true"
+                         actionListener="#{mbCidade.editar(cidade)}" process="@this" update=":tabView:formCidade"/>
+                    </p:column>
+
+                    <p:column>
+                        <p:commandButton value="Remover" immediate="true" process="@form" image="ui-icon ui-icon-close"
+                       	onclick="confirmation.show();" actionListener="#{mbCidade.editar(cidade)}"/>
+                    </p:column>
+                </p:dataTable> 
+
+                <p:confirmDialog message="Deseja realmente excluir este registro?"  header="Aviso" severity="alert" widgetVar="confirmation"> 
+                    <p:commandButton id="btnSim" value="Sim" oncomplete="confirmation.hide();" immediate="true" actionListener="#{mbCidade.delete}" update=":tabView:formCidade" />
+                    <p:commandButton id="btnNao" value="Não" onclick="confirmation.hide();" type="button"/>
+                </p:confirmDialog>
+            </h:form>
+
+                </p:tab>
+            </p:tabView>  
+        </p:fieldset>
+
+    </ui:define>
+
+</ui:composition>
